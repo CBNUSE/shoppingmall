@@ -2,31 +2,34 @@
 <%@page import="user.UserBean"%>
 <%@page import="java.util.Vector"%>
 <%@page import="user.UserDAO"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <%
-	request.setCharacterEncoding("euc-kr");	
+	request.setCharacterEncoding("UTF-8");	
 
 	UserDAO userDAO = new UserDAO();
 	
 	Vector<UserBean> vec = userDAO.allSelectMember();
+	
+	String mid = "park";		//ê´€ë¦¬ì ê³„ì •
+	
 	String id = request.getParameter("id");
 	String idcheck = null;
 	String password = request.getParameter("password");
 	
 	for(int i=0; i<vec.size(); i++){
-			UserBean bean = vec.get(i); //º¤ÅÍ¿¡ ´ã±ä ºóÅ¬·¡½º¸¦ ÇÏ³ª¾¿ ÃßÃâ
-			if(id.equals(bean.getId())){
-				idcheck = bean.getId();
+			UserBean bean = vec.get(i); //ë²¡í„°ì— ë‹´ê¸´ ë¹ˆí´ë˜ìŠ¤ë¥¼ í•˜ë‚˜ì”© ì¶”ì¶œ
+			if(id.equals(bean.getCid())){
+				idcheck = bean.getCid();
 			}
 	}
 	
 	if(idcheck == null){
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
-		script.println("alert('ÇØ´ç ¾ÆÀÌµğ°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù');");
+		script.println("alert('í•´ë‹¹ ì•„ì´ë””ê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤');");
 		script.println("history.back();");
 		script.println("</script>");
 		script.close();
@@ -36,19 +39,25 @@
 	if(!(password.equals(userDAO.getPass(idcheck)))){
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
-		script.println("alert('ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù');");
+		script.println("alert('ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤');");
 		script.println("history.back();");
 		script.println("</script>");
 		script.close();
 		return;
 	}
 	
-	//¾ÆÀÌµğ¿Í ÆĞ½º¿öµå¸¦ ¹Ş¾Æ¼­ ¼¼¼Ç ÀúÀåÇØº¸ÀÚ
+	//ì•„ì´ë””ì™€ íŒ¨ìŠ¤ì›Œë“œë¥¼ ë°›ì•„ì„œ ì„¸ì…˜ ì €ì¥í•´ë³´ì
 	session.setAttribute("user_id", id);
-	//¼¼¼ÇÀÇ À¯Áö½Ã°£ ¼³Á¤
-	session.setMaxInactiveInterval(60*60); //60ÃÊ*2°£À¯Áö
+	//ì„¸ì…˜ì˜ ìœ ì§€ì‹œê°„ ì„¤ì •
+	session.setMaxInactiveInterval(60*60); //60ì´ˆ*2ê°„ìœ ì§€
 	
-	response.sendRedirect("select.jsp");
+	//ê´€ë¦¬ì ê³„ì •ì¼ ì‹œ
+	if(mid.equals(idcheck)){
+		response.sendRedirect("select.jsp");
+	}
+	else{
+		response.sendRedirect("home.jsp");
+	}
 %>
 <body>
 

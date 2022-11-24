@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Vector;
 
+import product.Bean;
 import util.DatabaseUtil;
 
 public class UserDAO {
@@ -88,6 +89,30 @@ public class UserDAO {
 		return bean;
 	}
 		
+	public UserBean retrieveCustomer(String cid) {
+		String sql = "SELECT * FROM customer WHERE cid = ?";
+		UserBean ubean = new UserBean();
+		try {
+			Connection conn = DatabaseUtil.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,cid);
+
+			//쿼리실행
+			rs = pstmt.executeQuery();			
+			if(rs.next()) {
+				ubean.setCid(rs.getString(1));
+				ubean.setCpassword(rs.getString(2));
+				ubean.setCname(rs.getString(3));
+				ubean.setCaddress(rs.getString(4));
+				ubean.setCtel(rs.getString(5));
+			}
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return ubean;
+	}
+	
 	//한 회원의 패스워드를 리턴하는 메소드 작성
 	public String getPass(String id) {
 		//스트링으로 리턴을 해야하기에 스트링변수 선언
@@ -108,13 +133,13 @@ public class UserDAO {
 		}		
 		return password;
 	}
-		
+	
 	//한 회원의 정보를 수정하는 메소드
 	public void updateCustomer(UserBean mbean) {
 		Connection conn = DatabaseUtil.getConnection();
 		try {
 			//쿼리준비,,,,만약 수정사항을 더 더하고싶다면 콤마콤마로 늘려가면됨
-			String sql = "update user set caddress=?,ctel=? where cid=?";
+			String sql = "update customer set caddress=?,ctel=? where cid=?";
 			//쿼리실행 객체 선언
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			//?에 값을 맵핑

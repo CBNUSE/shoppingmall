@@ -1,15 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link rel="stylesheet" href="./css/login.css" type="text/css">
 <title>Insert title here</title>
 </head>
 <body>
-	  <!--Ёв╨Й╧ы-->
+	  <!--К└╓К╦▄К╟■-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
           <a class="navbar-brand" href="#"> Squid Auction</a>
@@ -52,15 +52,15 @@
         <div class="row my-5">
             <form action="loginProc.jsp">
                 <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label">╬фюл╣П</label>
+                  <label for="exampleInputEmail1" class="form-label">Л∙└Л²╢К■■</label>
                   <input type="text" class="form-control" name="id" aria-describedby="emailHelp">
                 </div>
                 <div class="mb-3">
-                  <label for="exampleInputPassword1" class="form-label">╨Я╧п╧Ьхё</label>
+                  <label for="exampleInputPassword1" class="form-label">К╧└К╟─К╡┬М≤╦</label>
                   <input type="password" class="form-control" name="password">
                 </div>
-                <button type="submit" class="btn btn-secondary">╥н╠вюнго╠Б</button>
-                <a href="signup.jsp" class="btn btn-secondary">х╦©Ь╟║ютго╠Б</a>
+                <button type="submit" class="btn btn-secondary">К║°Й╥╦Л²╦М∙≤Й╦╟</button>
+                <a href="signup.jsp" class="btn btn-secondary">М ▄Л⌡░Й╟─Л·┘М∙≤Й╦╟</a>
               </form>
         </div>
     </div>

@@ -76,7 +76,7 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="insertProduct.jsp">register</a>
+                <a class="nav-link" href="mypage.jsp">마이페이지</a>
               </li>
                <li class="nav-item">
                 <a class="nav-link" href="logout.jsp">Logout</a>
