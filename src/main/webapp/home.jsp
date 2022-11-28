@@ -162,7 +162,7 @@
                 	int j=0;
                 	
                 	if(num == 0){
-                		ArrayList<ProductBean> list = prDAO.getList2();
+                		ArrayList<ProductBean> list = prDAO.getAllProduct();
 
             			for(int i=0; i<list.size(); i++){
             				String address = list.get(i).getPaddress();
@@ -260,7 +260,7 @@
             %>
             <% 	
                	if (num == 3){
-               		Vector<ProductBean> vec = prDAO.search(search);
+               		Vector<ProductBean> vec = prDAO.searchProduct(search);
             %>
             <table style="margin-left:70px;">
             <%

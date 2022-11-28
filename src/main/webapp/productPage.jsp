@@ -30,7 +30,7 @@
 			id = Integer.parseInt(request.getParameter("id"));
 		}
 		
-		ProductBean pro = new PrDAO().getPro(id);	
+		ProductBean pro = new PrDAO().retrieveProduct(id);	
  	 %>
   </head>
   
