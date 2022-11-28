@@ -1,5 +1,3 @@
-<%@page import="bid.bid_bean"%>
-<%@page import="bid.BidDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="product.*"%>
@@ -20,7 +18,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-    <title>Squid Auction</title>
+    <title>Squid 쇼핑몰</title>
     
     <%	
     	request.setCharacterEncoding("UTF-8");
@@ -50,9 +48,6 @@
                 <a class="nav-link" href="#">Account</a>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Mode
-                </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" href="#">Buy</a></li>
                   <li><a class="dropdown-item" href="#">Sell</a></li>
@@ -106,11 +101,11 @@
     <div class="row">
         <div class="col-12">
           <!-- Button trigger modal -->
-<form action="productBidProc.jsp">
+<form action="buyProc.jsp">
   <div class="col-md-4" style="margin-bottom:15px;">           
      <label for="inputyear" class="form-label ">구매 수량 입력</label>
      <input type="text" class="form-control"  name="buyTotal">
-     <input type="hidden" name="product_id" value="<%=id %>">
+     <input type="hidden" name="pnum" value="<%=id %>">
      <button type="submit" class="btn btn-secondary">구매</button>
      <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModa2">
   취소
@@ -126,11 +121,11 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Warning</h5>
+        <h5 class="modal-title" id="exampleModalLabel">경고</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Do you want to cancel?
+        취소하시겠습니까?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

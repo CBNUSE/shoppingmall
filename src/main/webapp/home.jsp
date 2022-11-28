@@ -56,23 +56,14 @@
       <!--네브바-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="home.jsp"> Squid Auction</a>
+          <a class="navbar-brand" href="home.jsp"> Squid 쇼핑몰</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link" href="info.jsp">winning bid Product</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Mode
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="home.jsp">buyer</a></li>
-                  <li><a class="dropdown-item" href="reverse/home2.jsp">seller</a></li>
-                </ul>
+                <a class="nav-link" href="purchaseInfo.jsp">구매상품 보러가기</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="mypage.jsp">마이페이지</a>
@@ -124,9 +115,6 @@
           </li>
       </ul>
       <hr/>
-      <div class="mode">
-      		<h2>you are Buyer!!!</h2>
-      </div>
        <div calss="container-fluid " >
         <div class="row">
           <div class="col-10">
@@ -178,7 +166,7 @@
 		                  <a href="productPage.jsp?id=<%=list.get(i).getPnum() %>"><img src="file/<%=address %>" style="height:200px; width:230px;" class="card-img-top" alt="..."></a>
 		                  <h5 class="card-title overflow-hidden" style="height:30px; width:18rem; font-weight: bold; color:black; text-shadow: 3px 3px 2px silver; font-size: 25px;"><%= list.get(i).getPname() %></h5>
 		                  <p class="card-text overflow-hidden" style="height:25px; width:18rem; color:red; font-weight: bold; font-size: 20px;"><%= list.get(i).getPprice() %><span style="color:black; font-size:13px;">원</span></p>
-		                  <a href="#" class="btn btn-secondary">Auction</a>
+		                  <a href="#" class="btn btn-secondary">구매하기</a>
 		                </div>
 	                <!-- <div class="card" style="width: 18rem; margin:20px;">
     	                	<img class="card-img-top" height="250px" alt="..." src="file/">
@@ -214,7 +202,7 @@
 		                  <a href="productPage.jsp?id=<%=bean.getPnum() %>"><img src="file/<%=address %>" style="height:200px; width:230px;"  class="card-img-top" alt="..."></a>
 		                  <h5 class="card-title overflow-hidden" style="height:30px; width:18rem; font-weight: bold; color:black; text-shadow: 3px 3px 2px silver; font-size: 25px;"><%= bean.getPname() %></h5>
 		                  <p class="card-text overflow-hidden" style="height:25px; width:18rem; color:red; font-weight: bold; font-size: 20px;"><%= bean.getPprice() %><span style="color:black; font-size:13px;">원</span></p>
-		                  <a href="#" class="btn btn-secondary">Auction</a>
+		                  <a href="#" class="btn btn-secondary">구매하기</a>
 		                </div>           	
                    	</td>
               		<%
@@ -247,7 +235,7 @@
             		<a href="productPage.jsp?id=<%=bean.getPnum() %>"><img src="file/<%=address %>" style="height:200px; width:230px;"  class="card-img-top" alt="..."></a>
                		<h5 class="card-title overflow-hidden" style="height:30px; width:18rem; font-weight: bold; color:black; text-shadow: 3px 3px 2px silver; font-size: 25px;"><%= bean.getPname() %></h5>
                		<p class="card-text overflow-hidden" style="height:25px; width:18rem; color:red; font-weight: bold; font-size: 20px;"><%= bean.getPprice() %><span style="color:black; font-size:13px;">원</span></p>
-               		<a href="#" class="btn btn-secondary">Auction</a>
+               		<a href="#" class="btn btn-secondary">구매하기</a>
              	</div>           	
             </td>            
             <%
@@ -279,7 +267,7 @@
             		<a href="productPage.jsp?id=<%=bean.getPnum() %>"><img src="file/<%=address %>" style="height:200px; width:230px;"  class="card-img-top" alt="..."></a>
                		<h5 class="card-title overflow-hidden" style="height:30px; width:18rem; font-weight: bold; color:black; text-shadow: 3px 3px 2px silver; font-size: 25px;"><%= bean.getPname() %></h5>
                		<p class="card-text overflow-hidden" style="height:25px; width:18rem; color:red; font-weight: bold; font-size: 20px;"><%= bean.getPprice() %><span style="color:black; font-size:13px;">원</span></p>
-               		<a href="#" class="btn btn-secondary">Auction</a>
+               		<a href="#" class="btn btn-secondary">구매하기</a>
              	</div>           	
             </td>
             <%
@@ -311,7 +299,7 @@
             		<a href="productPage.jsp?id=<%=bean.getPnum() %>"><img src="file/<%=address %>" style="height:200px; width:230px;"  class="card-img-top" alt="..."></a>
                		<h5 class="card-title overflow-hidden" style="height:30px; width:18rem; font-weight: bold; color:black; text-shadow: 3px 3px 2px silver; font-size: 25px;"><%= bean.getPname() %></h5>
                		<p class="card-text overflow-hidden" style="height:25px; width:18rem; color:red; font-weight: bold; font-size: 20px;"><%= bean.getPprice() %><span style="color:black; font-size:13px;">원</span></p>
-               		<a href="#" class="btn btn-secondary">Auction</a>
+               		<a href="#" class="btn btn-secondary">구매하기</a>
              	</div>           	
             </td>
             <%
@@ -343,7 +331,7 @@
             		<a href="productPage.jsp?id=<%=bean.getPnum() %>"><img src="file/<%=address %>" style="height:200px; width:230px;"  class="card-img-top" alt="..."></a>
                		<h5 class="card-title overflow-hidden" style="height:30px; width:18rem; font-weight: bold; color:black; text-shadow: 3px 3px 2px silver; font-size: 25px;"><%= bean.getPname() %></h5>
                		<p class="card-text overflow-hidden" style="height:25px; width:18rem; color:red; font-weight: bold; font-size: 20px;"><%= bean.getPprice() %><span style="color:black; font-size:13px;">원</span></p>
-               		<a href="#" class="btn btn-secondary">Auction</a>
+               		<a href="#" class="btn btn-secondary">구매하기</a>
              	</div>           	
             </td>
             <%
@@ -375,7 +363,7 @@
             		<a href="productPage.jsp?id=<%=bean.getPnum() %>"><img src="file/<%=address %>" style="height:200px; width:230px;"  class="card-img-top" alt="..."></a>
                		<h5 class="card-title overflow-hidden" style="height:30px; width:18rem; font-weight: bold; color:black; text-shadow: 3px 3px 2px silver; font-size: 25px;"><%= bean.getPname() %></h5>
                		<p class="card-text overflow-hidden" style="height:25px; width:18rem; color:red; font-weight: bold; font-size: 20px;"><%= bean.getPprice() %><span style="color:black; font-size:13px;">원</span></p>
-               		<a href="#" class="btn btn-secondary">Auction</a>
+               		<a href="#" class="btn btn-secondary">구매하기</a>
              	</div>           	
             </td>
             <%

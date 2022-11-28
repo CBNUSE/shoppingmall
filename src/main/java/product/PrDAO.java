@@ -79,13 +79,28 @@ public class PrDAO {
 	}
 	
 	//상품이미지 수정 메소드
-	public void updateProductImg(String user_id, String path) {
+	public void updateProductImg(int pnum, String path) {
 		Connection conn = DatabaseUtil.getConnection();
 		try {
-			String sql = "update product set address=? where user_id=?";
+			String sql = "update product set paddress=? where pnum=?";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, path);
-			pstmt.setString(2, user_id);
+			pstmt.setInt(2, pnum);
+			pstmt.executeUpdate();
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	//상품 재고 업데이트 메소드(사용자 구매 시)
+	public void updateProductTotal(int ptotal, int pnum) {
+		Connection conn = DatabaseUtil.getConnection();
+		try {
+			String sql = "update product set ptotal=? where pnum=?";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, ptotal);
+			pstmt.setInt(2, pnum);
 			pstmt.executeUpdate();
 			conn.close();
 		} catch (Exception e) {
@@ -296,6 +311,7 @@ public class PrDAO {
 				bean.setPday(rs.getDate(6));
 				bean.setPaddress(rs.getString(7));
 				bean.setViews(rs.getInt(8));
+				bean.setPtotal(rs.getInt(9));
 				return bean;
 			}
 		}catch (Exception e) {
@@ -304,7 +320,7 @@ public class PrDAO {
 		return null; 
 	}
 	
-	//상품 마감시간 초과 시 아이디 받아서 해당상품 삭제
+	//상품 아이디 받아서 해당상품 삭제
 	public int deleteProduct(int id) {
 		String SQL = "delete from product WHERE pnum = ?";
 		Connection conn = DatabaseUtil.getConnection();
@@ -323,7 +339,7 @@ public class PrDAO {
 	public void incleaseViews(int id) {
 		Connection conn = DatabaseUtil.getConnection();
 		try {
-			String sql = "update product set views = views + 1 where p = ?;";
+			String sql = "update product set views = views + 1 where pnum = ?";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, id);
 			pstmt.executeUpdate();
