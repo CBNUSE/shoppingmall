@@ -47,7 +47,7 @@
                     </div>
                     <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <a href="home.jsp"><button type="button" class="btn btn-secondary">Buy</button></a>
+                    <a href="insertProduct.jsp"><button type="button" class="btn btn-secondary">Buy</button></a>
                           </div>
                            </div>
                           </div>

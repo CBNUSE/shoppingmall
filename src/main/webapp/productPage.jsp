@@ -1,7 +1,7 @@
 <%@page import="bid.bid_bean"%>
 <%@page import="bid.BidDAO"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@page import="product.*"%>
 <%@ page import="java.io.PrintWriter" %>
 <%@ page import="java.net.URLEncoder" %>
@@ -14,7 +14,7 @@
 <html>
   <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
@@ -23,18 +23,18 @@
     <title>Squid Auction</title>
     
     <%	
-    	request.setCharacterEncoding("euc-kr");
+    	request.setCharacterEncoding("UTF-8");
     
 		int id = 10;
 		if(request.getParameter("id") != null){
 			id = Integer.parseInt(request.getParameter("id"));
 		}
 		
-		Bean pro = new PrDAO().getPro(id);	
+		ProductBean pro = new PrDAO().getPro(id);	
  	 %>
   </head>
   
-      <!--네브바-->
+      <!--�ㅻ�諛�-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
           <a class="navbar-brand" href="home.jsp"> Squid Auction</a>
@@ -79,117 +79,41 @@
         <div class="row my-5">
           
                 <div class="mb-3">
-                    <label for="Title" class="form-label">Title</label>
-                    <p type="text" class="form-control"><%= pro.getName() %></p>
+                    <label for="Title" class="form-label">상품제목</label>
+                    <p type="text" class="form-control"><%= pro.getPname() %></p>
 				</div>
                 <div class="mb-3">
-                    <label for="Title" class="form-label">Image</label>
+                    <label for="Title" class="form-label">상품이미지</label>
 					</br>
-                    <img src="file/<%=pro.getAddress() %>" class="img-fluid" alt="..." width="500px" height="700px">
+                    <img src="file/<%=pro.getPaddress() %>" class="img-fluid" alt="..." width="500px" height="700px">
                 </div>
       
                 <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label">Product description</label>
-                    <textarea class="form-control" disabled id="exampleFormControlTextarea1" rows="5"><%= pro.getContent() %></textarea>
+                    <label for="exampleFormControlTextarea1" class="form-label">상품 설명</label>
+                    <textarea class="form-control" disabled id="exampleFormControlTextarea1" rows="5"><%= pro.getPcontent() %></textarea>
                   </div>
                 </div>
                 <div class=row>
                 
                 <div class="col-md-4">               
-	                <label for="inputZip" class="form-label">Start Price</label>
-	                <p type="text" class="form-control"><%= pro.getPrice() %>$</p>
-                </div>
-              <%
-              	BidDAO BDAO = new BidDAO();
-            	bid_bean bbean = BDAO.getHighest2(id);
-              %>
-                <div class="col-md-4">
-                 <label for="inputZip" class="form-label">Highest Bidding Price</label>
-                 <p type="text" class="form-control"><%=bbean.getPrice() %>$</p>
-                </div>
-                
-                <div class="col-md-4">
-                 <label for="inputZip" class="form-label">Highest Bidder</label>
-                 <p type="text" class="form-control"><%=bbean.getBuy_id() %></p>
-                </div>
-               
-				
-                <div class="row g-3">
-                
+	                <label for="inputZip" class="form-label">가격</label>
+	                <p type="text" class="form-control"><%= pro.getPprice() %>$</p>
                 </div>
                 
         </div>
     </div>
     <div class="container ">
-    <div class="row g-3 ">
-        <div class="col-md-4">
-        
-        
-          <label for="inputyear" class="form-label ">limit time</label>
-         
-         <div class="container " style="width:500px;">
-         <div class="row g-3 ">
-		<%
-			SimpleDateFormat dfhm = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        	Calendar cal = Calendar.getInstance();
-		
-        	int yyyy = cal.get(Calendar.YEAR);
-        	int MM = cal.get(Calendar.MONTH);
-        	int dd = cal.get(Calendar.DATE);
-        	int hh = cal.get(Calendar.HOUR);
-        	int mm = cal.get(Calendar.MINUTE);
-        	int ss = cal.get(Calendar.SECOND);
-        	
-        	cal.set(yyyy,MM,dd,hh,mm,ss);
-        	
-        	Date currentTime = new Date();
-        	
-        	String duedate = pro.getBbsdate();
-        	String today = dfhm.format(currentTime);
-        	
-        	Date endDate = null;
-        	Date now = null;
-        	
-        	long diff = 0;
-        	long diffss= 0;
-        	long diffdd = 0;
-        	long diffhh = 0;
-        	long diffmm = 0;
-        	long diffsc = 0;
-        	
-        	endDate = dfhm.parse(duedate);
-        	now = dfhm.parse(today);
-        	
-        	diff = endDate.getTime() - now.getTime();
-        	diffss = diff / 1000;
-            diffdd = diffss / (24*60*60);
-            diffhh = (diffss % (24*60*60)) / (60*60);
-            diffmm = ((diffss % (24*60*60)) % (60*60)) / 60;
-            diffsc =  ((diffss % (24*60*60)) % (60*60)) % 60;
-
-
-            out.println("Remaining time : " + diffdd + "days " + diffhh + "hour " + diffmm + "minute " + diffsc + "second <br/>");
-        	%>           
-		</div>
-        </div>
-        <div class="col-md-4">
-            <label class="p-2">   </label>
-          
-        </div>
-
-    </div>
-
     <div class="row">
         <div class="col-12">
           <!-- Button trigger modal -->
 <form action="productBidProc.jsp">
   <div class="col-md-4" style="margin-bottom:15px;">           
-     <label for="inputyear" class="form-label ">Bidding</label>
-     <input type="text" class="form-control"  name="Biddingprice">
+     <label for="inputyear" class="form-label ">구매 수량 입력</label>
+     <input type="text" class="form-control"  name="buyTotal">
      <input type="hidden" name="product_id" value="<%=id %>">
-     <button type="submit" class="btn btn-secondary">Bid</button>
+     <button type="submit" class="btn btn-secondary">구매</button>
      <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModa2">
-  Cancel
+  취소
 </button>
   </div>
   

@@ -1,33 +1,74 @@
 package product;
 
+import java.sql.Date;
+
 public class ProductBean {
-	String user_id;	//판매자아이디
-	String buy_id;	//구매자아이디
-	int product_id;	//상품아이디
-	int price;		//낙찰가
+	String pname;
+	String pcategory;
+	int pprice;
+	String pcontent;
+	Date pday;
+	String paddress;		//상품이미지 저장위치
+	int views;
+	int ptotal;
 	
-	public String getUser_id() {
-		return user_id;
+	public int getPtotal() {
+		return ptotal;
 	}
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public void setPtotal(int ptotal) {
+		this.ptotal = ptotal;
 	}
-	public String getBuy_id() {
-		return buy_id;
+	public String getPaddress() {
+		return paddress;
 	}
-	public void setBuy_id(String buy_id) {
-		this.buy_id = buy_id;
+	public void setPaddress(String paddress) {
+		this.paddress = paddress;
 	}
-	public int getProduct_id() {
-		return product_id;
+	int pnum;
+	
+	public String getPname() {
+		return pname;
 	}
-	public void setProduct_id(int product_id) {
-		this.product_id = product_id;
+	public void setPname(String pname) {
+		this.pname = pname;
 	}
-	public int getPrice() {
-		return price;
+	public String getPcategory() {
+		return pcategory;
 	}
-	public void setPrice(int price) {
-		this.price = price;
+	public void setPcategory(String pcategory) {
+		this.pcategory = pcategory;
+	}
+	public int getPprice() {
+		return pprice;
+	}
+	public void setPprice(int pprice) {
+		this.pprice = pprice;
+	}
+	public String getPcontent() {
+		return pcontent;
+	}
+	public void setPcontent(String pcontent) {
+		this.pcontent = pcontent;
+	}
+
+	public Date getPday() {
+		return pday;
+	}
+	public void setPday(Date pday) {
+		this.pday = pday;
+	}
+	
+	public int getPnum() {
+		return pnum;
+	}
+	public void setPnum(int pnum) {
+		this.pnum = pnum;
+	}
+
+	public int getViews() {
+		return views;
+	}
+	public void setViews(int views) {
+		this.views = views;
 	}
 }

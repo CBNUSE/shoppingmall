@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -21,7 +21,7 @@
 </head>
 <body>
 <%
-	request.setCharacterEncoding("utf-8");
+	request.setCharacterEncoding("UTF-8");
 	
 	String id = (String)session.getAttribute("user_id");
 	//out.println(id);
@@ -67,26 +67,30 @@
     <hr/>
     
 <div class="alert">
-	<h2>Register product by <span class="font">normal auction system</span></h2>
+	<h2>현재 상품 등록<span class="font">페이지 입니다.</span></h2>
 </div>
 <form action="insertProductProc.jsp" method="post" enctype="multipart/form-data" >
 <div class="container my-5">
         <div class="row my-5">
 			<div class="mb-3">
-                <label for="Title" class="form-label">Title</label>
+                <label for="Title" class="form-label">상품 이름</label>
                 <input type="text" class="form-control" id="name" name="name">
             </div>
             <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Product description</label>
+                <label for="exampleFormControlTextarea1" class="form-label">상품 설명</label>
                 <textarea class="form-control" name="content" rows="5"></textarea>
             </div>
             <div class=row>
             <div class="col-md-4">
-                  <label for="inputZip" class="form-label">Starting price</label>
+                  <label for="inputZip" class="form-label">상품 가격</label>
                   <input type="number" class="form-control" name="price"  min="0" step="1000" placeholder="가격을 입력해주세요. (￦)">
             </div>
             <div class="col-md-4">
-               <label for="inputyear" class="form-label ">Category</label>
+                  <label for="inputZip" class="form-label">상품 수량</label>
+                  <input type="number" class="form-control" name="total"  min="0" placeholder="등록 상품 수량을 입력해주세요.">
+            </div>
+            <div class="col-md-4">
+               <label for="inputyear" class="form-label ">상품 카테고리</label>
                <select name="category" class="form-select">
                  <option selected>digitaldevice</option>
                  <option value="beauty">beauty</option>
@@ -103,53 +107,20 @@
             
             <div class="col-md-4">
         
-        <label class="">  Due date </label>
-          <label for="inputyear" class="form-label "></label>
-          <select name="year" class="form-select">
-            <option selected>Year</option>
-            <option>2021</option>
-            <option>2022</option>
-            <option>2023</option>
-            <option>2024</option>
-            <option>2025</option>
-          </select>
-        </div>
-        <div class="col-md-4">
-            <label class="p-2">   </label>
-          <label for="inputState" class="form-label"></label>
-          <select name="month" class="form-select">
-            <option selected>Month</option>
-            <option>01</option>
-            <option>02</option>
-            <option>03</option>
-            <option>04</option>
-            <option>05</option>
-            <option>06</option>
-            <option>07</option>
-            <option>08</option>
-            <option>09</option>
-            <option>10</option>
-            <option>11</option>
-            <option>12</option>
-          </select>
-        </div>
-        <div class="col-md-4">
-          <label for="inputZip" class="form-label"></label>
-          <input type="text" class="form-control" name="day" placeholder="Day">
-        </div>
+        
             
             <div class="col-md-4">
               
             <div class="mt-3 mb-3">
-            	<label for="formFileMultiple" class="form-label">File upload</label>
+            	<label for="formFileMultiple" class="form-label">이미지 업로드</label>
 		    	<input class="form-control" type="file" name="file"><br><br>	
     		</div>
     		
     		<button type="submit" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
-  				Registration
+  				등록
 			</button>	
 			<button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModa2">
-			  Cancel
+			  취소
 			</button>
     	</div>
     	</div>

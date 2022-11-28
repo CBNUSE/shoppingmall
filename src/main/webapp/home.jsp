@@ -1,15 +1,15 @@
 <%@page import="java.util.Vector"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="product.*"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="EUC-KR"%>
 <%
-	request.setCharacterEncoding("euc-kr");
+	request.setCharacterEncoding("UTF-8");
 %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <title>Insert title here</title>
 <style>
@@ -18,7 +18,6 @@
 	}
 </style>
 </head>
-<%@include file="productDeleteProc.jsp"%>
 <body>
 	<%
   		String id = null;
@@ -163,13 +162,10 @@
                 	int j=0;
                 	
                 	if(num == 0){
-                		ArrayList<Bean> list = prDAO.getList2();
+                		ArrayList<ProductBean> list = prDAO.getList2();
 
             			for(int i=0; i<list.size(); i++){
-            				if(list.get(i).getBbsavailable()==0){
-            					continue;
-            				}
-            				String address = list.get(i).getAddress();
+            				String address = list.get(i).getPaddress();
             				//4열로 나눔(한 행에 4개씩 보여줌)
             				if(j%4 == 0){
             		%>
@@ -179,10 +175,9 @@
             		%>
             		<td>	
 		                <div class="card-body" style="width:250px; height:400px; margin-left:70px;">
-		                  <a href="productPage.jsp?id=<%=list.get(i).getId() %>"><img src="file/<%=address %>" style="height:200px; width:230px;" class="card-img-top" alt="..."></a>
-		                  <h5 class="card-title overflow-hidden" style="height:30px; width:18rem; font-weight: bold; color:black; text-shadow: 3px 3px 2px silver; font-size: 25px;"><%= list.get(i).getName() %></h5>
-		                  <p class="card-text overflow-hidden" style="height:25px; width:18rem; color:red; font-weight: bold; font-size: 20px;"><%= list.get(i).getPrice() %><span style="color:black; font-size:13px;">원</span></p>
-		                  <p class="card-text overflow-hidden" style="height:13px; width:18rem; color:black; font-weight: 500; font-size:10px;">duedate : <%= list.get(i).getBbsdate().substring(0,11)+list.get(i).getBbsdate().substring(11,13) + ":" + list.get(i).getBbsdate().substring(14,16)+"" %></p>
+		                  <a href="productPage.jsp?id=<%=list.get(i).getPnum() %>"><img src="file/<%=address %>" style="height:200px; width:230px;" class="card-img-top" alt="..."></a>
+		                  <h5 class="card-title overflow-hidden" style="height:30px; width:18rem; font-weight: bold; color:black; text-shadow: 3px 3px 2px silver; font-size: 25px;"><%= list.get(i).getPname() %></h5>
+		                  <p class="card-text overflow-hidden" style="height:25px; width:18rem; color:red; font-weight: bold; font-size: 20px;"><%= list.get(i).getPprice() %><span style="color:black; font-size:13px;">원</span></p>
 		                  <a href="#" class="btn btn-secondary">Auction</a>
 		                </div>
 	                <!-- <div class="card" style="width: 18rem; margin:20px;">
@@ -199,18 +194,15 @@
             	</table>
             		<% 	
                 	if (num == 1){
-                		Vector<Bean> vec = prDAO.categorySelectProduct(category);
+                		Vector<ProductBean> vec = prDAO.categorySelectProduct(category);
                		%>
                 	<table style="margin-left:70px;">	
                		<%
                 		int r = 0;
                 		
                 		for(int i=0; i<vec.size(); i++){	
-          					Bean bean = vec.get(i); //벡터에 담긴 빈클래스를 하나씩 추출
-          					if(bean.getBbsavailable()==0){
-            					continue;
-            				}
-          					String address = bean.getAddress();
+                			ProductBean bean = vec.get(i); //벡터에 담긴 빈클래스를 하나씩 추출
+          					String address = bean.getPaddress();
           					if(r%4 == 0){
         			%>
          	                <tr class="box2">
@@ -219,10 +211,9 @@
                    	%>
                    	<td>
     	               	<div class="card-body" style="width:250px; height:400px; margin-left:70px;">
-		                  <a href="productPage.jsp?id=<%=bean.getId() %>"><img src="file/<%=address %>" style="height:200px; width:230px;"  class="card-img-top" alt="..."></a>
-		                  <h5 class="card-title overflow-hidden" style="height:30px; width:18rem; font-weight: bold; color:black; text-shadow: 3px 3px 2px silver; font-size: 25px;"><%= bean.getName() %></h5>
-		                  <p class="card-text overflow-hidden" style="height:25px; width:18rem; color:red; font-weight: bold; font-size: 20px;"><%= bean.getPrice() %><span style="color:black; font-size:13px;">원</span></p>
-		                  <p class="card-text overflow-hidden" style="height:13px; width:18rem; color:black; font-weight: 500; font-size:10px;">duedate : <%= bean.getBbsdate().substring(0,11)+bean.getBbsdate().substring(11,13) + ":" + bean.getBbsdate().substring(14,16)+"" %><br></p>
+		                  <a href="productPage.jsp?id=<%=bean.getPnum() %>"><img src="file/<%=address %>" style="height:200px; width:230px;"  class="card-img-top" alt="..."></a>
+		                  <h5 class="card-title overflow-hidden" style="height:30px; width:18rem; font-weight: bold; color:black; text-shadow: 3px 3px 2px silver; font-size: 25px;"><%= bean.getPname() %></h5>
+		                  <p class="card-text overflow-hidden" style="height:25px; width:18rem; color:red; font-weight: bold; font-size: 20px;"><%= bean.getPprice() %><span style="color:black; font-size:13px;">원</span></p>
 		                  <a href="#" class="btn btn-secondary">Auction</a>
 		                </div>           	
                    	</td>
@@ -237,17 +228,14 @@
           	</table>
           	<% 	
                	if (num == 2){
-               		Vector<Bean> vec = prDAO.sortLatest(category);
+               		Vector<ProductBean> vec = prDAO.sortLatest(category);
             %>
             <table style="margin-left:70px;">
             <%
             		int x=0;
                		for(int i=0; i<vec.size(); i++){
-               			Bean bean = vec.get(i);
-               			if(bean.getBbsavailable()==0){
-        					continue;
-        				}
-               			String address = bean.getAddress();
+               			ProductBean bean = vec.get(i);
+               			String address = bean.getPaddress();
                			if(x%4 == 0){
             %>
             	<tr class="box2">
@@ -256,10 +244,9 @@
             %>
             <td>
             	<div class="card-body" style="width:250px; height:400px; margin-left:70px;">
-            		<a href="productPage.jsp?id=<%=bean.getId() %>"><img src="file/<%=address %>" style="height:200px; width:230px;"  class="card-img-top" alt="..."></a>
-               		<h5 class="card-title overflow-hidden" style="height:30px; width:18rem; font-weight: bold; color:black; text-shadow: 3px 3px 2px silver; font-size: 25px;"><%= bean.getName() %></h5>
-               		<p class="card-text overflow-hidden" style="height:25px; width:18rem; color:red; font-weight: bold; font-size: 20px;"><%= bean.getPrice() %><span style="color:black; font-size:13px;">원</span></p>
-               		<p class="card-text overflow-hidden" style="height:13px; width:18rem; color:black; font-weight: 500; font-size:10px;">duedate : <%= bean.getBbsdate().substring(0,11)+bean.getBbsdate().substring(11,13) + ":" + bean.getBbsdate().substring(14,16)+"" %><br></p>
+            		<a href="productPage.jsp?id=<%=bean.getPnum() %>"><img src="file/<%=address %>" style="height:200px; width:230px;"  class="card-img-top" alt="..."></a>
+               		<h5 class="card-title overflow-hidden" style="height:30px; width:18rem; font-weight: bold; color:black; text-shadow: 3px 3px 2px silver; font-size: 25px;"><%= bean.getPname() %></h5>
+               		<p class="card-text overflow-hidden" style="height:25px; width:18rem; color:red; font-weight: bold; font-size: 20px;"><%= bean.getPprice() %><span style="color:black; font-size:13px;">원</span></p>
                		<a href="#" class="btn btn-secondary">Auction</a>
              	</div>           	
             </td>            
@@ -273,17 +260,14 @@
             %>
             <% 	
                	if (num == 3){
-               		Vector<Bean> vec = prDAO.search(search);
+               		Vector<ProductBean> vec = prDAO.search(search);
             %>
             <table style="margin-left:70px;">
             <%
             		int z=0;
                		for(int i=0; i<vec.size(); i++){
-               			Bean bean = vec.get(i);
-               			if(bean.getBbsavailable()==0){
-        					continue;
-        				}
-               			String address = bean.getAddress();
+               			ProductBean bean = vec.get(i);
+               			String address = bean.getPaddress();
                			if(z%4 == 0){
             %>
             	<tr class="box2">
@@ -292,10 +276,9 @@
             %>
             <td>
             	<div class="card-body" style="width:250px; height:400px; margin-left:70px;">
-            		<a href="productPage.jsp?id=<%=bean.getId() %>"><img src="file/<%=address %>" style="height:200px; width:230px;"  class="card-img-top" alt="..."></a>
-               		<h5 class="card-title overflow-hidden" style="height:30px; width:18rem; font-weight: bold; color:black; text-shadow: 3px 3px 2px silver; font-size: 25px;"><%= bean.getName() %></h5>
-               		<p class="card-text overflow-hidden" style="height:25px; width:18rem; color:red; font-weight: bold; font-size: 20px;"><%= bean.getPrice() %><span style="color:black; font-size:13px;">원</span></p>
-               		<p class="card-text overflow-hidden" style="height:13px; width:18rem; color:black; font-weight: 500; font-size:10px;">duedate : <%= bean.getBbsdate().substring(0,11)+bean.getBbsdate().substring(11,13) + ":" + bean.getBbsdate().substring(14,16)+"" %><br></p>
+            		<a href="productPage.jsp?id=<%=bean.getPnum() %>"><img src="file/<%=address %>" style="height:200px; width:230px;"  class="card-img-top" alt="..."></a>
+               		<h5 class="card-title overflow-hidden" style="height:30px; width:18rem; font-weight: bold; color:black; text-shadow: 3px 3px 2px silver; font-size: 25px;"><%= bean.getPname() %></h5>
+               		<p class="card-text overflow-hidden" style="height:25px; width:18rem; color:red; font-weight: bold; font-size: 20px;"><%= bean.getPprice() %><span style="color:black; font-size:13px;">원</span></p>
                		<a href="#" class="btn btn-secondary">Auction</a>
              	</div>           	
             </td>
@@ -309,17 +292,14 @@
             %>
             <% 	
                	if (num == 4){
-               		Vector<Bean> vec = prDAO.sortPopularity(category);
+               		Vector<ProductBean> vec = prDAO.sortPopularity(category);
             %>
             <table style="margin-left:70px;">
             <%
             		int y=0;
                		for(int i=0; i<vec.size(); i++){
-               			Bean bean = vec.get(i);
-               			if(bean.getBbsavailable()==0){
-        					continue;
-        				}
-               			String address = bean.getAddress();
+               			ProductBean bean = vec.get(i);
+               			String address = bean.getPaddress();
                			if(y%4 == 0){
             %>
             	<tr class="box2">
@@ -328,10 +308,9 @@
             %>
             <td>
             	<div class="card-body" style="width:250px; height:400px; margin-left:70px;">
-            		<a href="productPage.jsp?id=<%=bean.getId() %>"><img src="file/<%=address %>" style="height:200px; width:230px;"  class="card-img-top" alt="..."></a>
-               		<h5 class="card-title overflow-hidden" style="height:30px; width:18rem; font-weight: bold; color:black; text-shadow: 3px 3px 2px silver; font-size: 25px;"><%= bean.getName() %></h5>
-               		<p class="card-text overflow-hidden" style="height:25px; width:18rem; color:red; font-weight: bold; font-size: 20px;"><%= bean.getPrice() %><span style="color:black; font-size:13px;">원</span></p>
-               		<p class="card-text overflow-hidden" style="height:13px; width:18rem; color:black; font-weight: 500; font-size:10px;">duedate : <%= bean.getBbsdate().substring(0,11)+bean.getBbsdate().substring(11,13) + ":" + bean.getBbsdate().substring(14,16)+"" %><br></p>
+            		<a href="productPage.jsp?id=<%=bean.getPnum() %>"><img src="file/<%=address %>" style="height:200px; width:230px;"  class="card-img-top" alt="..."></a>
+               		<h5 class="card-title overflow-hidden" style="height:30px; width:18rem; font-weight: bold; color:black; text-shadow: 3px 3px 2px silver; font-size: 25px;"><%= bean.getPname() %></h5>
+               		<p class="card-text overflow-hidden" style="height:25px; width:18rem; color:red; font-weight: bold; font-size: 20px;"><%= bean.getPprice() %><span style="color:black; font-size:13px;">원</span></p>
                		<a href="#" class="btn btn-secondary">Auction</a>
              	</div>           	
             </td>
@@ -345,17 +324,14 @@
             %>
             <% 	
                	if (num == 5){
-               		Vector<Bean> vec = prDAO.sortPopularity2();
+               		Vector<ProductBean> vec = prDAO.sortPopularity2();
             %>
             <table style="margin-left:70px;">
             <%
             		int b=0;
                		for(int i=0; i<vec.size(); i++){
-               			Bean bean = vec.get(i);
-               			if(bean.getBbsavailable()==0){
-        					continue;
-        				}
-               			String address = bean.getAddress();
+               			ProductBean bean = vec.get(i);
+               			String address = bean.getPaddress();
                			if(b%4 == 0){
             %>
             	<tr class="box2">
@@ -364,10 +340,9 @@
             %>
             <td>
             	<div class="card-body" style="width:250px; height:400px; margin-left:70px;">
-            		<a href="productPage.jsp?id=<%=bean.getId() %>"><img src="file/<%=address %>" style="height:200px; width:230px;"  class="card-img-top" alt="..."></a>
-               		<h5 class="card-title overflow-hidden" style="height:30px; width:18rem; font-weight: bold; color:black; text-shadow: 3px 3px 2px silver; font-size: 25px;"><%= bean.getName() %></h5>
-               		<p class="card-text overflow-hidden" style="height:25px; width:18rem; color:red; font-weight: bold; font-size: 20px;"><%= bean.getPrice() %><span style="color:black; font-size:13px;">원</span></p>
-               		<p class="card-text overflow-hidden" style="height:13px; width:18rem; color:black; font-weight: 500; font-size:10px;">duedate : <%= bean.getBbsdate().substring(0,11)+bean.getBbsdate().substring(11,13) + ":" + bean.getBbsdate().substring(14,16)+"" %><br></p>
+            		<a href="productPage.jsp?id=<%=bean.getPnum() %>"><img src="file/<%=address %>" style="height:200px; width:230px;"  class="card-img-top" alt="..."></a>
+               		<h5 class="card-title overflow-hidden" style="height:30px; width:18rem; font-weight: bold; color:black; text-shadow: 3px 3px 2px silver; font-size: 25px;"><%= bean.getPname() %></h5>
+               		<p class="card-text overflow-hidden" style="height:25px; width:18rem; color:red; font-weight: bold; font-size: 20px;"><%= bean.getPprice() %><span style="color:black; font-size:13px;">원</span></p>
                		<a href="#" class="btn btn-secondary">Auction</a>
              	</div>           	
             </td>
@@ -381,17 +356,14 @@
             %>
             <% 	
                	if (num == 6){
-               		Vector<Bean> vec = prDAO.sortLatest2();
+               		Vector<ProductBean> vec = prDAO.sortLatest2();
             %>
             <table style="margin-left:70px;">
             <%
             		int b=0;
                		for(int i=0; i<vec.size(); i++){
-               			Bean bean = vec.get(i);
-               			if(bean.getBbsavailable()==0){
-        					continue;
-        				}
-               			String address = bean.getAddress();
+               			ProductBean bean = vec.get(i);
+               			String address = bean.getPaddress();
                			if(b%4 == 0){
             %>
             	<tr class="box2">
@@ -400,10 +372,9 @@
             %>
             <td>
             	<div class="card-body" style="width:250px; height:400px; margin-left:70px;">
-            		<a href="productPage.jsp?id=<%=bean.getId() %>"><img src="file/<%=address %>" style="height:200px; width:230px;"  class="card-img-top" alt="..."></a>
-               		<h5 class="card-title overflow-hidden" style="height:30px; width:18rem; font-weight: bold; color:black; text-shadow: 3px 3px 2px silver; font-size: 25px;"><%= bean.getName() %></h5>
-               		<p class="card-text overflow-hidden" style="height:25px; width:18rem; color:red; font-weight: bold; font-size: 20px;"><%= bean.getPrice() %><span style="color:black; font-size:13px;">원</span></p>
-               		<p class="card-text overflow-hidden" style="height:13px; width:18rem; color:black; font-weight: 500; font-size:10px;">duedate : <%= bean.getBbsdate().substring(0,11)+bean.getBbsdate().substring(11,13) + ":" + bean.getBbsdate().substring(14,16)+"" %><br></p>
+            		<a href="productPage.jsp?id=<%=bean.getPnum() %>"><img src="file/<%=address %>" style="height:200px; width:230px;"  class="card-img-top" alt="..."></a>
+               		<h5 class="card-title overflow-hidden" style="height:30px; width:18rem; font-weight: bold; color:black; text-shadow: 3px 3px 2px silver; font-size: 25px;"><%= bean.getPname() %></h5>
+               		<p class="card-text overflow-hidden" style="height:25px; width:18rem; color:red; font-weight: bold; font-size: 20px;"><%= bean.getPprice() %><span style="color:black; font-size:13px;">원</span></p>
                		<a href="#" class="btn btn-secondary">Auction</a>
              	</div>           	
             </td>

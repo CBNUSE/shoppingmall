@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Vector;
 
-import product.Bean;
 import util.DatabaseUtil;
 
 public class UserDAO {
