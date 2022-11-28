@@ -53,7 +53,7 @@
 	
 	//관리자 계정일 시
 	if(mid.equals(idcheck)){
-		response.sendRedirect("select.jsp");
+		response.sendRedirect("selectMenu.jsp");
 	}
 	else{
 		response.sendRedirect("home.jsp");

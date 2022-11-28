@@ -67,7 +67,7 @@
     <hr/>
     
 <div class="alert">
-	<h2>Register product by <span class="font">normal auction system</span></h2>
+	<h2>Order product by <span class="font"> Order system</span></h2>
 </div>
 <form action="insertProductProc.jsp" method="post" enctype="multipart/form-data" >
 <div class="container my-5">

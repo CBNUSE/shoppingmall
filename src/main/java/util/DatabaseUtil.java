@@ -8,7 +8,7 @@ public class DatabaseUtil {
 		try {
 			String dbURL = "jdbc:mysql://localhost:3306/SHOPPING?characterEncoding=UTF-8&serverTimezone=UTC";
 			String dbID = "root";
-			String dbPassword = "1801";
+			String dbPassword = "ehowjddl0228@@";
 			Class.forName("com.mysql.jdbc.Driver");
 			return DriverManager.getConnection(dbURL, dbID, dbPassword);
 		} catch (Exception e) {
