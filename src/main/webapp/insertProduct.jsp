@@ -67,7 +67,11 @@
     <hr/>
     
 <div class="alert">
+<<<<<<< HEAD
 	<h2>현재 상품 등록<span class="font">페이지 입니다.</span></h2>
+=======
+	<h2>Order product by <span class="font"> Order system</span></h2>
+>>>>>>> new_page
 </div>
 <form action="insertProductProc.jsp" method="post" enctype="multipart/form-data" >
 <div class="container my-5">
