@@ -20,16 +20,16 @@
 </head>
 <body>
 <%
-	int size = 1024*1024*10; //저장가능한 파일크기
-	String file = "";			//업로드 한 파일의 이름(이름이 변경될 수 있음) 우리는 안할듯?
-	String originalFile = "";	//이름이 변경되기 전 실제 파일 이름
+	int size = 1024*1024*10; //���κ��ν�� ���쇳�ш린
+	String file = "";			//��濡��� �� ���쇱�� �대�(�대��� 蹂�寃쎈�� �� ����) �곕━�� ������?
+	String originalFile = "";	//�대��� 蹂�寃쎈��湲� �� �ㅼ�� ���� �대�
 	String path2 = "";
-	//실제로 파일 업로드하는 과정
+	//�ㅼ��濡� ���� ��濡������� 怨쇱��
 	String test = "C:\\opensource_workspace\\main_web\\Auction_Site\\src\\main\\webapp\\file";
-	
+	//C:\Users\parke\OneDrive\바탕 화면\SE\Shopping\src\main\webapp\file
 	try{
 		MultipartRequest multi = new MultipartRequest(request, test, size,"UTF-8",new DefaultFileRenamePolicy());
-		String name = multi.getParameter("name");			//multi객체로 파라미터 받아와야됨
+		String name = multi.getParameter("name");			//multi媛�泥대� ���쇰�명�� 諛������쇰��
 		String content = multi.getParameter("content");
 		String category = multi.getParameter("category");
 		int price = Integer.parseInt(multi.getParameter("price"));
@@ -41,33 +41,33 @@
 	    String date = "";
 	        
 		SimpleDateFormat beforeFormat = new SimpleDateFormat("yyyymmdd");
-		//Date로 변경하기 위해 날짜 형식을 yyyy-mm-dd로 변경
+		//Date濡� 蹂�寃쏀��湲� ���� ��吏� ������ yyyy-mm-dd濡� 蹂�寃�
 		SimpleDateFormat afterFormat = new SimpleDateFormat("yyyy-mm-dd");
 		Date tempDate = null;
 			    
-		//yyyymmdd로된 날짜 형식으로 java.util.Date객체를 만듬
+		//yyyymmdd濡��� ��吏� �����쇰� java.util.Date媛�泥대�� 留���
 		tempDate = beforeFormat.parse(due_date);
 		out.print(tempDate);	   
-		//Date를 yyyy-mm-dd 형식으로 변경하여 String으로 반환
+		//Date瑜� yyyy-mm-dd �����쇰� 蹂�寃쏀���� String�쇰� 諛���
 		date = afterFormat.format(tempDate);
 	    
 	    out.println("date: " + date);
 		
-	    //String → java.sql.Date 변환 
-	    String day2 = date; // 형식을 지켜야 함
+	    //String �� java.sql.Date 蹂��� 
+	    String day2 = date; // ������ 吏�耳��� ��
 	    java.sql.Date d = java.sql.Date.valueOf(day2);
 	    PrDAO PDAO = new PrDAO();
 	    
 	    Enumeration files = multi.getFileNames();
-		String str = (String)files.nextElement();	//파일 이름을 받아와 스트링으로 저장
-		file = multi.getFilesystemName(str);	//업로드 된 파일 이름 가져옴
+		String str = (String)files.nextElement();	//���� �대��� 諛����� �ㅽ�몃��쇰� ����
+		file = multi.getFilesystemName(str);	//��濡��� �� ���� �대� 媛��몄��
 		//out.println(file);
 		String user_id = (String)session.getAttribute("user_id");
 		
 		int result = PDAO.write(name, category, price, content, d, file, user_id);
-	    //int i = PDAO.insert(name, content, category, price, d, file);	//sql형식 date변환 후 db연동
+	    //int i = PDAO.insert(name, content, category, price, d, file);	//sql���� date蹂��� �� db�곕��
 	    
-	    //오류시
+	    //�ㅻ���
 	    if(result == -1){
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
