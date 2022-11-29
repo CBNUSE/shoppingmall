@@ -22,20 +22,29 @@
             </li>
        <!--homepage-->
             <li class="menu-item">
-                <a href="home.jsp">
+                <a href="insertProduct.jsp">
                     <span class="fa-brands fa-linkedin-in"></span>
                 </a>
             </li>
        <!--order-->
             <li class="menu-item">
-                <a href="insertProduct.jsp">
+                <a href="#none" onclick="orderPage()">
+                <script type="text/javascript">
+	                function orderPage() {
+	                    window.open(
+	                      "order.jsp",
+	                      "OrderPage",
+	                      "width=1400, height=600, top=50, left=50"
+	                    );
+	                  }
+                </script>
                     <span class="fa-solid fa-cart-plus"></span>
                 </a>
             </li>
        <!--logout-->
             <li class="menu-item">
             <!-- 구현은 아직... -->
-                <a href="#menu">
+                <a href="logout.jsp">
                     <span class="fa-solid fa-right-from-bracket"></span>
                     
                 </a>
