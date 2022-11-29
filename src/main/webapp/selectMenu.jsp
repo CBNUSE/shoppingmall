@@ -28,7 +28,16 @@
             </li>
        <!--order-->
             <li class="menu-item">
-                <a href="insertProduct.jsp">
+                <a href="#none" onclick="orderPage()">
+                <script type="text/javascript">
+	                function orderPage() {
+	                    window.open(
+	                      "order.jsp",
+	                      "OrderPage",
+	                      "width=1400, height=600, top=50, left=50"
+	                    );
+	                  }
+                </script>
                     <span class="fa-solid fa-cart-plus"></span>
                 </a>
             </li>

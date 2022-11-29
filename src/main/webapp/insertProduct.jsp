@@ -27,51 +27,46 @@
 	//out.println(id);
 %>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="home.jsp"> Squid Auction</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Account</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Mode
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#">Buy</a></li>
-                  <li><a class="dropdown-item" href="#">Sell</a></li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Ask</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="logout.jsp">Log out</a>
-              </li>
-            </ul>
-            <form class="d-flex">
-              <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-          </div>
-        </div>
-      </nav>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="home.jsp"> Squid Auction</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Account</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Mode
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Buy</a></li>
+            <li><a class="dropdown-item" href="#">Sell</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Ask</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="logout.jsp">Log out</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
       
-    <hr/>
-    
 <div class="alert">
-<<<<<<< HEAD
-	<h2>현재 상품 등록<span class="font">페이지 입니다.</span></h2>
-=======
-	<h2>Order product by <span class="font"> Order system</span></h2>
->>>>>>> new_page
+	<h2>현재 <span class="font">상품 등록</span> 페이지입니다.</h2>
+<hr/>
 </div>
 <form action="insertProductProc.jsp" method="post" enctype="multipart/form-data" >
 <div class="container my-5">
